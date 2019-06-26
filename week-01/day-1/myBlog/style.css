@@ -1,0 +1,55 @@
+body {
+    /*background-color: rgb(60,184,120,0.8);*/
+    padding: 0 10%;
+    margin: 0;
+    font-family: "Open Sans";
+    background-image: url("./pictures/seamless3.jpg");
+}
+
+.navbar {
+    background:#333333;
+    width: 80%;
+    position: fixed;
+    text-align: right;
+    height: 25px;
+    padding: 20px 0;
+}
+
+.menus a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.blogname {
+    padding: 70px 0 10px;
+}
+
+.title {
+    break-after: always;
+}
+
+input[type=text] {
+    width: 418px;
+}
+
+.separated h2::before {
+    content: '-------';
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+h2 {
+    padding: 0 0 30px;
+    text-align: center;
+}
+
+.prevpost {
+    border: solid 2px grey;
+    padding: 10px;
+    margin: 0 0 20px;
+    background-color: rgb(255,255,255,0.6);
+    background-blend-mode: multiply;
+}
