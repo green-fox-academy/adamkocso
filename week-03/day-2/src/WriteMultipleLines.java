@@ -16,7 +16,7 @@ import java.util.List;
 public class WriteMultipleLines {
     public static void main(String[] args) {
 
-        writeMultipleLines("c:/Users/Hp i7 Pro/Desktop/my-fle.txt", "apple", 5);
+        writeMultipleLines("c:/Users/Hp i7 Pro/Desktop/my-file.txt", "apple", 5);
 
     }
 
