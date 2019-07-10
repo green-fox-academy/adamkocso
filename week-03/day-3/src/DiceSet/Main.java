@@ -16,7 +16,6 @@ public class Main {
                 while(diceSet.dice.get(i) != 6) {
                     diceSet.reroll(i);
                 }
-
         }
 
 //        System.out.println(diceSet.getCurrent());
