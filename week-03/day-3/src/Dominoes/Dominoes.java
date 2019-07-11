@@ -11,7 +11,7 @@ public class Dominoes {
         // eg: [2, 4], [4, 3], [3, 5] ...
 
         for (int i = 0; i < dominoes.size(); i++) {
-            for (int j =  1; j < dominoes.size(); j++) {
+            for (int j =  i + 1; j < dominoes.size(); j++) {
                 if (dominoes.get(i).getRightSide() == dominoes.get(j).getLeftSide()) {
                     dominoes.add(i + 1, dominoes.get(j));
                     dominoes.remove(j + 1);
