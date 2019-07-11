@@ -15,11 +15,12 @@ public class Blog {
    }
 
    public void delete(int number){
-       if (number < blogpost.size() - 1)
+       if (number < blogpost.size())
        blogpost.remove(number);
    }
 
    public void update(int number, BlogPost post){
+       if(number < blogpost.size())
        blogpost.set(number, post);
    }
 
