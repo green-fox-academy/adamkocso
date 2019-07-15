@@ -26,6 +26,10 @@ public class Aircraft {
         return maxAmmo;
     }
 
+    public int getBaseDamage() {
+        return baseDamage;
+    }
+
     public int fight(){
         int damage = ammoStorage * baseDamage;
         setAmmoStorage(0);
@@ -42,7 +46,12 @@ public class Aircraft {
         return ammo - (getAmmoStorage() - actualAmmo);
     }
 
-    public void getType(){
-        System.out.println(getClass().getSimpleName());
+    public String getType(){
+        return getClass().getSimpleName();
+    }
+
+    public String getStatus(){
+        return "Type " + getType() + ", " + "Ammo: " +
+                "" + getAmmoStorage() + ", " + "Base Damage: " + getBaseDamage() + ", " + "All Damage: " + getAmmoStorage() * getBaseDamage();
     }
 }
