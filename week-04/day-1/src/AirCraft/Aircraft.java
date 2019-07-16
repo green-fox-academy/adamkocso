@@ -7,7 +7,6 @@ public class Aircraft {
     int baseDamage;
 
 
-
     public Aircraft(int ammoStorage, int maxAmmo, int baseDamage) {
         this.ammoStorage = ammoStorage;
         this.maxAmmo = maxAmmo;
@@ -54,4 +53,6 @@ public class Aircraft {
         return "Type " + getType() + ", " + "Ammo: " +
                 "" + getAmmoStorage() + ", " + "Base Damage: " + getBaseDamage() + ", " + "All Damage: " + getAmmoStorage() * getBaseDamage();
     }
+
+
 }
