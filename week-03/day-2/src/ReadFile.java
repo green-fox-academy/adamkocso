@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ReadFile {
 
-    public List<String> readFile(String filename){
+    public static List<String> readFile(String filename){
         try {
             Path filepath = Paths.get(filename);
             List<String> lines = Files.readAllLines(filepath);

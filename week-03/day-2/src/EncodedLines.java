@@ -7,6 +7,7 @@ import java.util.List;
 public class EncodedLines {
 
     public static void main(String[] args) {
+//        System.out.println((char)(((int) 'b')-1));
         writeFiles("encoded-lines.txt");
     }
 

@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Doubled {
 
-
-
     public static void main(String[] args) {
-        writeFile("duplicated-chars.txt");
+        rewriteFile("duplicated-chars.txt");
     }
 
 
     public static List<String> decryption (String filename) {
-        ReadFile readFile = new ReadFile();
-        List<String> lines = readFile.readFile(filename);
+        List<String> lines = ReadFile.readFile(filename);
+        if(lines == null){
+            return new ArrayList<>();
+        }
         List<String> decryptedLines = new ArrayList<>();
         String decryptedLine = "";
 
@@ -32,18 +32,18 @@ public class Doubled {
 
 
 
-    public static void writeFile (String filename){
-        List<String> decryptedLines = decryption(filename);
+    public static void rewriteFile (String filename){
         try{
             Path filePath = Paths.get(filename);
             if(Files.exists(filePath)){
+                List<String> decryptedLines = decryption(filename);
                 Files.write(filePath,decryptedLines);
                 System.out.println("The decryption was successful!");
             } else {
                 throw new Exception();
             }
         } catch (Exception ex){
-            System.out.println("Unable to write the file: " + filename);
+            System.out.println("Unable to read the file: " + filename);
         }
     }
 
