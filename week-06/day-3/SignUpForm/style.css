@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(221, 221, 221);
+    font-family: Calibri;
+}
+
+.content {
+    background-color: white;
+    border-radius: 3px;
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px 40px 20px 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 400px;
+}
+
+
+.third-sized{
+    width: 45%;
+    font-size: 22px;
+    /*border: 1px solid black;*/
+}
+
+.second-sized{
+    width: 10%;
+    font-size: 22px;
+}
+
+.block1 {
+    padding: 20px;
+    text-align: left;
+}
+
+.block2 {
+    align-items: center;
+}
+
+
+.inputs {
+    width: 100%;
+}
+
+input[type='text'], input[type='email'], input[type='password']{
+    width: 100%;
+    font-size: 22px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 2px solid rgb(171,171,171);
+    padding: 3px;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    border-bottom: 3px solid green;
+}
+
+
+
+.button {
+    padding: 20px;
+    border-radius: 60px;
+    background-color: rgb(221, 221, 221);
+    box-shadow: 0px 3px rgb(187, 187, 187);
+}
+
+.social{
+    font-size: 20px;
+    color: white;
+}
+
+.bar{
+    padding: 10px 40px;
+    border-radius: 2px;
+
+}
+
+.facebook{
+    background-color: rgb(50,80,142);
+}
+
+.twitter{
+    background-color: rgb(85,172,238);
+}
+
+.google{
+    background-color: rgb(211,75,57);
+}
