@@ -1,0 +1,107 @@
+
+
+.content {
+    margin: 20px 10%;
+    height: 500px;
+    padding: 0 10%;
+    font-family: Calibri;
+}
+
+h1 {
+    width: 100%;
+    font-size: 48px;
+    color: rgb(0, 186, 211);
+    border-bottom: 2px solid rgb(0, 186, 211);
+    margin: 32px 0 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+h2 {
+    font-size: 40px;
+}
+
+
+a.button {
+    text-transform: uppercase;
+    padding: 8px;
+    background-color: red;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    margin: 0 1%;
+}
+
+a.start {
+    margin: 0 1% 0 0;
+}
+
+a.end {
+    margin: 0 0 0 1%;
+}
+
+.links {
+    text-align: center;
+}
+
+p {
+    color: orange;
+    margin: 0;
+}
+
+
+input[type=text] {
+    width: 86%;
+    font-size: 18px;
+    border: 1px solid red;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+.searchbar {
+    text-align: center;
+}
+
+input[type=submit] {
+    padding: 9px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+}
+
+#subtitel {
+    text-align: left;
+    margin: 20px 0 0 0;
+}
+
+table {
+    width: 100%;
+    border-radius: 2px;
+    overflow: hidden;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}
+
+td.first, td.second {
+    text-align: left;
+}
+
+th {
+    background-color: #69effe;
+}
+
+th, td {
+    padding: 10px 5px;
+}
