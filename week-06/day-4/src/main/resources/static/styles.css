@@ -11,8 +11,25 @@ h1 {
     width: 100%;
     font-size: 48px;
     color: rgb(0, 186, 211);
+}
+
+.myShopButton {
     border-bottom: 2px solid rgb(0, 186, 211);
-    margin: 32px 0 20px;
+    margin: 32px 0 0;
+    display: inline;
+}
+
+.header {
+    margin: 0;
+    border-bottom: 2px solid rgb(0, 186, 211);
+}
+
+.more {
+    float: right;
+}
+
+.moreButton {
+    margin: 0 0 20px 0;
 }
 
 a {
@@ -32,20 +49,14 @@ a.button {
     border-radius: 8px;
     color: white;
     border: none;
-    margin: 0 1%;
-}
-
-a.start {
-    margin: 0 1% 0 0;
-}
-
-a.end {
-    margin: 0 0 0 1%;
 }
 
 .links {
-    text-align: center;
+    justify-content: space-between;
+    display: flex;
+    margin: 20px 0 0 0;
 }
+
 
 p {
     color: orange;
@@ -61,6 +72,10 @@ input[type=text] {
     padding: 8px;
 }
 
+input[type=text].filterBar {
+    width: 70%;
+}
+
 .searchbar {
     text-align: center;
 }
@@ -70,13 +85,17 @@ input[type=submit] {
     color: white;
     background-color: red;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     font-size: 18px;
 }
 
 #subtitel {
     text-align: left;
     margin: 20px 0 0 0;
+}
+
+#priceSubtitel {
+    margin: 16px 0 0 27%;
 }
 
 table {
@@ -94,8 +113,20 @@ table, th, td {
     border-right: 2px solid white;
 }
 
-td.first, td.second {
+td {
+    font-size: 18px;
+}
+
+td.firstColumn {
+    font-size: 20px;
+}
+
+td.text, td.texttwo {
     text-align: left;
+}
+
+td.texttwo {
+    font-size: 14px;
 }
 
 th {

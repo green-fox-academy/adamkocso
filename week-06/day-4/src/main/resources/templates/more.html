@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Shop</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="content">
+  <header class="top">
+    <div class="header">
+      <a href="http://localhost:8080/webshop"><h1 class="myShopButton">My Shop</h1></a>
+      <div class="more">
+        <a href="http://localhost:8080/more-filters"><h1 class="moreButton">More>></h1></a>
+      </div>
+    </div>
+    <div class="links">
+        <a href="/filter-by-type?filter=Clothes+and+Shoes" class="button">clothes and shoes</a>
+        <a href="/filter-by-type?filter=Electronics" class="button">electronics</a>
+        <a href="/filter-by-type?filter=Beverages+and+Snacks" class="button">beverages and snacks</a>
+      <a href="/price-in-eur" class="button">euro</a>
+      <a href="/price-in-original" class="end button">original currency</a>
+    </div>
+  </header>
+
+  <div id="priceSubtitel">
+    <p>Filter by price:</p>
+  </div>
+
+  <form class="searchbar" method="POST" action="http://localhost:8080/filter-by-price">
+    <input class="filterButton" type="submit" name="pricefilter" value="Above">
+    <input class="filterButton" type="submit" name="pricefilter" value="Below">
+    <input class="filterButton" type="submit" name="pricefilter" value="Exactly">
+
+    <input class="filterBar" type="text" name="searchprice" placeholder="...e.g.: 300">
+  </form>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity of stock</th>
+    </tr>
+    <tr th:each="item : ${list}">
+      <td th:text="${item.getName()}" class="text firstColumn"></td>
+      <td th:text="${item.getType()}" class="text"></td>
+      <td th:text="${item.getDescription()}" class="texttwo"></td>
+      <td th:text="${item.getPrice()} + ' ' + 'Kč'"></td>
+      <td th:text="${item.getQuantityOfStock()}"></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

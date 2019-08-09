@@ -8,7 +8,12 @@
 <body>
   <div class="content">
     <header class="top">
-      <a href="http://localhost:8080"><h1>My Shop</h1></a>
+      <div class="header">
+        <a href="http://localhost:8080/webshop"><h1 class="myShopButton">My Shop</h1></a>
+        <div class="more">
+          <a href="http://localhost:8080/more-filters"><h1 class="moreButton">More>></h1></a>
+        </div>
+      </div>
       <div class="links">
         <a href="/only-available" class="start button">only available</a>
         <a href="/cheapest-first" class="button">cheapest first</a>
@@ -27,13 +32,15 @@
     <table>
       <tr>
         <th>Name</th>
+        <th>Type</th>
         <th>Description</th>
         <th>Price</th>
         <th>Quantity of stock</th>
       </tr>
       <tr th:each="item : ${list}">
-        <td th:text="${item.getName()}" class="first"></td>
-        <td th:text="${item.getDescription()}" class="second"></td>
+        <td th:text="${item.getName()}" class="text firstColumn"></td>
+        <td th:text="${item.getType()}" class="text"></td>
+        <td th:text="${item.getDescription()}" class="texttwo"></td>
         <td th:text="${item.getPrice()} + ' ' + 'Kč'"></td>
         <td th:text="${item.getQuantityOfStock()}"></td>
       </tr>
