@@ -4,8 +4,7 @@ import com.greenfoxacademy.springstart.Modells.ShopItem;
 import com.greenfoxacademy.springstart.Modells.Storage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
@@ -30,7 +29,7 @@ public class ShopItemController {
 
   }
 
-  @RequestMapping(value = "")
+  @GetMapping(value = "")
   public String tableItems(Model model){
     list.getStorage().clear();
     table();
@@ -40,7 +39,7 @@ public class ShopItemController {
   }
 
 
-  @RequestMapping("/only-available")
+  @GetMapping("/only-available")
   public String availableItems(Model model){
     list.getStorage().clear();
     table();
@@ -51,7 +50,7 @@ public class ShopItemController {
     return "index";
   }
 
-  @RequestMapping("/cheapest-first")
+  @GetMapping("/cheapest-first")
   public String cheapestFirst(Model model){
     list.getStorage().clear();
     table();
@@ -63,7 +62,7 @@ public class ShopItemController {
   }
 
 
-  @RequestMapping("/contains-nike")
+  @GetMapping("/contains-nike")
   public String containsNike(Model model){
     list.getStorage().clear();
     table();
@@ -74,7 +73,7 @@ public class ShopItemController {
     return "index";
   }
 
-  @RequestMapping("/average-stock")
+  @GetMapping("/average-stock")
   public String averageStock(Model model){
     list.getStorage().clear();
     table();
@@ -87,7 +86,7 @@ public class ShopItemController {
     return "average";
   }
 
-  @RequestMapping("/most-expensive")
+  @GetMapping("/most-expensive")
   public String mostExpensive(Model model){
     list.getStorage().clear();
     table();
@@ -105,17 +104,15 @@ public class ShopItemController {
   }
 
 
-//  @RequestMapping("/search")
-//  public String search(Model model,
-//                       @RequestParam("searchtext") String searchText,
-//                       @RequestParam("searchbutton") String searchButton) {
-//    list.getStorage().clear();
-//    table();
-//    List<ShopItem> searchItem = list.getStorage().stream()
-//            .filter(x -> x.getDescription().toLowerCase().contains(searchText))
-//            .collect(Collectors.toList());
-//    model.addAttribute("list", searchItem);
-//    return "index";
-//  }
+  @PostMapping("/search")
+  public String search(Model model, @RequestParam("searchtext") String searchText) {
+    list.getStorage().clear();
+    table();
+    List<ShopItem> searchItem = list.getStorage().stream()
+            .filter(x -> x.getDescription().toLowerCase().contains(searchText.toLowerCase()) || x.getName().toLowerCase().contains(searchText.toLowerCase()))
+            .collect(Collectors.toList());
+    model.addAttribute("list", searchItem);
+    return "index";
+  }
 
 }

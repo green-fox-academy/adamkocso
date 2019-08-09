@@ -17,12 +17,12 @@
       <a href="/most-expensive" class="end button">most expensive available</a>
     </div>
   </header>
-  <form class="searchbar">
+  <form class="searchbar" method="POST" action="http://localhost:8080/search">
     <div id="subtitel">
       <p>Search for:</p>
     </div>
-    <input type="text" placeholder="...something like nike">
-    <input type="submit" value="Search">
+    <input type="text" name="searchtext" id="searchtext" placeholder="...something like nike">
+    <input type="submit" name="searchbutton" id="searchbutton" value="Search">
   </form>
   <h2 th:text=" ${average}" ></h2>
 </div>
