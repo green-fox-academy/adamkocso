@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Shop</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+ <table>
+   <tr>
+     <th>Index</th>
+     <th>Name</th>
+     <th>Account balance</th>
+     <th>Animal type</th>
+     <th>Status</th>
+   </tr>
+   <tr th:each="account : ${accounts}" th:classappend="${account.status == 'king'} ? 'king' : 'servant'">
+     <td th:text="${accountStat.index} + 1"></td>
+     <td th:text="${account.name}"></td>
+     <td th:text="${#numbers.formatDecimal(account.balance, 0, 2)}"></td>
+     <td th:text="${account.animalType}"></td>
+     <td th:text="${account.status}"></td>
+   </tr>
+ </table>
+
+  <p th:utext="|This is an <em>HTML</em> text. <b>Enjoy yourself!</b>|"></p>
+  <p th:text="|This is an <em>HTML</em> text. <b>Enjoy yourself!</b>|"></p>
+</body>
+</html>

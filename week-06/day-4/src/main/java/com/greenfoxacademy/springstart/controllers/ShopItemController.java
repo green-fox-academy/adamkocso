@@ -130,7 +130,7 @@ public class ShopItemController {
   }
 
 
-  @GetMapping("/more-filters")
+  @GetMapping({"/more-filters", "/price-in-original"})
   public String tablefilterItems(Model model){
     list.getStorage().clear();
     table();
@@ -152,17 +152,19 @@ public class ShopItemController {
   }
 
 
-//  @RequestMapping("/price-in-eur")
-//  public String priceInEur(Model model){
-//    list.getStorage().clear();
-//    table();
-//    List<ShopItem> eur = list.getStorage().stream()
-//            .peek(x -> x.setPrice(x.getPrice() * 0.0387136))
-//            .collect(Collectors.toList());
-//    model.addAttribute("list", eur);
-//    return "more";
-//
-//  }
+  @RequestMapping("/price-in-eur")
+  public String priceInEur(Model model){
+    list.getStorage().clear();
+    table();
+    List<ShopItem> eur = list.getStorage().stream()
+            .map(x -> x.clone().changePrice(0.0387))
+            .collect(Collectors.toList());
+    model.addAttribute("list", eur);
+    model.addAttribute("currency", "Eur");
+
+    return "more";
+
+  }
 
 
   @PostMapping("/filter-by-price")

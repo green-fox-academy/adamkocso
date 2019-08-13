@@ -42,4 +42,14 @@ public class ShopItem {
   public void setPrice(double price) {
     this.price = price;
   }
+
+  public ShopItem changePrice(double modifier) {
+    this.price *= modifier;
+    return this;
+  }
+
+  @Override
+  public ShopItem clone() {
+    return new ShopItem(this.name, this.type, this.description, this.price, this.quantityOfStock);
+  }
 }
