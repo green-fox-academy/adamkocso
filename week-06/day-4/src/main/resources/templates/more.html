@@ -47,7 +47,7 @@
       <td th:text="${item.getName()}" class="text firstColumn"></td>
       <td th:text="${item.getType()}" class="text"></td>
       <td th:text="${item.getDescription()}" class="texttwo"></td>
-      <td th:text="${item.getPrice()} + ' ' + (${currency != null} ? ${currency} : 'Kc')"></td>
+      <td th:text="${#numbers.formatDecimal(item.getPrice(),1,2)} + ' ' + (${currency != null} ? ${currency} : 'Kc')"></td>
       <td th:text="${item.getQuantityOfStock()}"></td>
     </tr>
   </table>
