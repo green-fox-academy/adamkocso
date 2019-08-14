@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Shop</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <form method="post" action="http://localhost:8080/useful/cesar">
+    <input type="text" name="message" placeholder="Enter your message">
+    <input type="number" name="number">
+    <button type="submit" name="button">Check</button>
+
+    <p th:text="${message}"></p>
+  </form>
+</body>
+</html>
