@@ -10,11 +10,15 @@
     <li><a href="#">Information</a></li>
   </ul>
   <img src="greenfox.png">
-  <p th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 tricks.'"></p>
+  <p th:text="'This is ' + ${fox.getName()} + '. Currently living on '
+  + ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. He knows ' + ${fox.getTricks().size()} + ' tricks.'"></p>
   <h1>Known tricks</h1>
+
+  <p th:if="${fox.getTricks().size() == 0}">You know no tricks, yet. Go and learn some.</p>
+
   <ul>
-    <li>write HTML</li>
-    <li>code in Java</li>
+    <li th:id="${fox.getTricks().size() != 0}" th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
   </ul>
+
 </body>
 </html>
