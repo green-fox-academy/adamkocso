@@ -1,11 +1,11 @@
 package com.greenfoxacademy.springstart.Controllers;
 
-import com.greenfoxacademy.springstart.Models.Fox;
-import com.greenfoxacademy.springstart.Models.Foxes;
+import com.greenfoxacademy.springstart.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
   Foxes foxes;
+  Food foods;
+  FoxFinder fox;
+  Drink drinks;
 
   @Autowired
-  public MainController(Foxes foxes) {
+  public MainController(Foxes foxes, Food foods, FoxFinder fox, Drink drinks) {
     this.foxes = foxes;
+    this.foods = foods;
+    this.fox = fox;
+    this.drinks = drinks;
   }
-
-
 
 
   @GetMapping("/")
@@ -27,11 +31,8 @@ public class MainController {
     if(name == null || name.equals("")){
       return "redirect:/login";
     }
-    for (Fox fox: foxes.getFoxes()) {
-      if(fox.getName().equals(name)){
-        model.addAttribute("fox", fox);
-      }
-    }
+        model.addAttribute("fox", fox.foxFinder(foxes, name));
+
     return "index";
   }
 
@@ -45,5 +46,21 @@ public class MainController {
     foxes.addFox(new Fox(name));
     return "redirect:/?name=" + name;
   }
+
+
+  @GetMapping("/nutritionStore")
+  public String renderingNutritionStore (@RequestParam(value = "name", required = false) String name, Model model){
+    model.addAttribute("foods", foods);
+    model.addAttribute("drinks", drinks);
+    model.addAttribute("fox", fox.foxFinder(foxes, name));
+    return "nutritionStore";
+  }
+// ez még nem működik
+  @PostMapping("/nutritionStore")
+  public String setFoodAndDrink(@ModelAttribute Fox fox){
+    return "redirect:/?name=Karak";
+  }
+
+
 
 }

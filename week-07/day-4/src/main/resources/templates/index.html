@@ -8,6 +8,8 @@
 <body>
   <ul>
     <li><a href="#">Information</a></li>
+    <li><a th:href="'/nutritionStore?name=' + ${fox.getName()}">Nutrition Store</a></li>
+
   </ul>
   <img src="greenfox.png">
   <p th:text="'This is ' + ${fox.getName()} + '. Currently living on '
