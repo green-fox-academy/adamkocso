@@ -3,17 +3,17 @@
 <head>
   <title>My Shop</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" href="/styles.css" />
+<!--  <link rel="stylesheet" href="/styles.css" />-->
 </head>
 <body>
   <ul>
-    <li><a href="#">Information</a></li>
+    <li><a th:href="'/?name=' + ${fox.getName()}">Information</a></li>
     <li><a href="#">Nutrition Store</a></li>
-    <li><a href="#">Trick Center</a></li>
-    <li><a href="#">Action History</a></li>
+    <li><a th:href="'/trickCenter?name=' + ${fox.getName()}">Trick Center</a></li>
+    <li><a th:href="'/actionHistory?name=' + ${fox.getName()}">Action History</a></li>
   </ul>
 
-  <form method="post" action="/nutritionStore" th:object="${fox}">
+  <form method="post" th:action="'/nutritionStore?name=' + ${fox.getName()}" th:object="${fox}">
     <label for="food">Food</label>
     <select id="food" name="food" th:field="*{food}">
       <option th:each="food : ${foods.getFoods()}" th:text="${food}" th:value="${food}">

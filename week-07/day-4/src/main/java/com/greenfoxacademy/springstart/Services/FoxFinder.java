@@ -1,5 +1,7 @@
-package com.greenfoxacademy.springstart.Models;
+package com.greenfoxacademy.springstart.Services;
 
+import com.greenfoxacademy.springstart.Models.Fox;
+import com.greenfoxacademy.springstart.Services.Foxes;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -3,14 +3,16 @@
 <head>
   <title>My Shop</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" href="/styles.css" />
+<!--  <link rel="stylesheet" href="/styles.css" />-->
 </head>
 <body>
   <ul>
     <li><a href="#">Information</a></li>
     <li><a th:href="'/nutritionStore?name=' + ${fox.getName()}">Nutrition Store</a></li>
-
+    <li><a th:href="'/trickCenter?name=' + ${fox.getName()}">Trick Center</a></li>
+    <li><a th:href="'/actionHistory?name=' + ${fox.getName()}">Action History</a></li>
   </ul>
+
   <img src="greenfox.png">
   <p th:text="'This is ' + ${fox.getName()} + '. Currently living on '
   + ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. He knows ' + ${fox.getTricks().size()} + ' tricks.'"></p>
@@ -19,7 +21,7 @@
   <p th:if="${fox.getTricks().size() == 0}">You know no tricks, yet. Go and learn some.</p>
 
   <ul>
-    <li th:id="${fox.getTricks().size() != 0}" th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
+    <li th:if="${fox.getTricks().size() != 0}" th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
   </ul>
 
 </body>

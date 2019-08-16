@@ -49,5 +49,9 @@ public class Fox {
   public void setTricks(List<String> tricks) {
     this.tricks = tricks;
   }
+
+  public void addTricks(String trick){
+    tricks.add(trick);
+  }
 }
 

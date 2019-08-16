@@ -1,4 +1,4 @@
-package com.greenfoxacademy.springstart.Models;
+package com.greenfoxacademy.springstart.Services;
 
 import org.springframework.stereotype.Service;
 
