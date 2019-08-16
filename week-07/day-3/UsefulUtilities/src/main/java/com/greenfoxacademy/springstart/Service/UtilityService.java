@@ -25,7 +25,9 @@ public class UtilityService {
   }
 
   public boolean validateEmail (String email){
-    if(email.indexOf('@') >= 0 && email.indexOf('.') >= email.indexOf('@')){
+    if(email.indexOf('@') > 0
+            && email.indexOf('.') >= email.indexOf('@') + 1
+            && email.indexOf('.') != email.length() - 1){
       return true;
     }
     return false;
