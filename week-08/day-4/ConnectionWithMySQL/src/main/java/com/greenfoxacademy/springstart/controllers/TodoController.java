@@ -33,14 +33,11 @@ public class TodoController {
   public String filter(Model model, @RequestParam(value = "isActive", required = false)boolean status){
     List<Todo> filterdList = new ArrayList<>();
     if(status) {
-      filterdList = todoRepository.findAll().stream()
-              .filter(x -> !x.isDone())
-              .collect(Collectors.toList());
+      model.addAttribute("todos", todoRepository.findAllByDone(!status));
     } else {
-      filterdList = todoRepository.findAll();
+      model.addAttribute("todos", todoRepository.findAll());
     }
 
-    model.addAttribute("todos", filterdList);
     return "todolist";
   }
 
