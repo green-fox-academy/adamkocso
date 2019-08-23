@@ -7,10 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.WebParam;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Controller
 @RequestMapping("/todo")
@@ -31,7 +28,6 @@ public class TodoController {
 
   @GetMapping("/")
   public String filter(Model model, @RequestParam(value = "isActive", required = false)boolean status){
-    List<Todo> filterdList = new ArrayList<>();
     if(status) {
       model.addAttribute("todos", todoRepository.findAllByDone(!status));
     } else {
@@ -63,6 +59,18 @@ public class TodoController {
     return "redirect:/todo/list";
   }
 
+  @GetMapping("/{id}/edit")
+  public String renderingEdit(@PathVariable("id") long id, Model model){
+    model.addAttribute("todo", todoRepository.findById(id));
+    model.addAttribute("id", id);
+    return "edittodo";
+  }
 
+
+  @PostMapping("/{id}/edit")
+  public String editing(@PathVariable("id") long id, @ModelAttribute Todo editedTodo){
+    todoRepository.save(editedTodo);
+    return "redirect:/todo/list";
+  }
 
 }
