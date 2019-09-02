@@ -3,22 +3,35 @@
 <head>
   <title>My ToDo's</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
 <h1>Todos for today:</h1>
 <a href="http://localhost:8080/todo/add">Add new todo</a>
+<br>
+<a href="http://localhost:8080/todo/assignees">List of Assignees</a>
+<br>
+<form method="post" action="http://localhost:8080/todo/list">
+  <input type="text" name="search">
+  <input type="submit" value="Submit">
+</form>
+<br>
 <table>
   <tr>
     <th>ID</th>
     <th>ACTION</th>
     <th>DONE</th>
     <th>URGENT</th>
+    <th>NAME</th>
+    <th>EMAIL</th>
   </tr>
   <tr th:each="todo : ${todos}">
     <td th:text="${todo.getId()}"></td>
     <td th:text="${todo.getTitle()}"></td>
-    <td th:text="${todo.isDone()}"></td>
-    <td th:text="${todo.isUrgent()}"></td>
+    <td th:text="${todo.isDone()}" class="boolen"></td>
+    <td th:text="${todo.isUrgent()}" class="boolen"></td>
+    <td th:text="${todo.getName()}"></td>
+    <td th:text="${todo.getEmail()}"></td>
     <td><a th:href="'/todo/' + ${todo.getId()} + '/delete'">delete</a></td>
     <td><a th:href="'/todo/' + ${todo.getId()} + '/edit'">edit</a></td>
   </tr>

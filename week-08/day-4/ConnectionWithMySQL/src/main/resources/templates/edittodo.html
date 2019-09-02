@@ -17,6 +17,10 @@
     <label for="done">Done</label>
     <input type="checkbox" id="done" name="done" th:field="*{done}">
     <br>
+      <select id="assignee" name="assignee">
+        <option th:each="assignee : ${assignees}" th:text="${assignee.getName()}" th:value="${assignee.getName()}"></option>
+      </select>
+    <br>
     <input type="submit" value="Submit">
     <a href="http://localhost:8080/todo/list">Cancel</a>
   </form>
