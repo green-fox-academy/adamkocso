@@ -52,5 +52,5 @@ public class DoublingControllerTest {
             .andExpect(jsonPath("$.welcome_message", is("Oh, hi there Petike, my dear student!")));
   }
 
-  
+
 }

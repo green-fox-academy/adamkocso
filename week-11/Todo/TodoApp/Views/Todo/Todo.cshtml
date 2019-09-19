@@ -1,0 +1,48 @@
+﻿@model User
+
+<h1>Things to Do</h1>
+
+<br />
+
+<form action="todo/add?username=@Model.Name" method="post">
+    <div>
+        <label for="title">Add Todo:</label>
+    </div>
+    <input type="text" name="title" value="" />
+    <button type="submit" class="btn btn-success btn-sm">Add</button>
+</form>
+
+<br />
+
+<table class="table table-striped">
+    <tr class="thead-dark text-center font-weight-bold">
+        <th>Title</th>
+        <th>Complete</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var todo in Model.Todos)
+    {
+        <tr>
+            <td>@todo.Title</td>
+            
+            <td class="text-center">
+                <form>
+                    <button type="submit" class="btn btn-success btn-sm">Complete</button>
+                </form>
+            </td>
+            
+            <td class="text-center">
+                <form action="todo/edit?id=@todo.TodoId&username=@Model.Name" method="post">
+                    <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                </form>
+            </td>
+            
+            <td class="text-center">
+                <form action="todo/delete?id=@todo.TodoId&username=@Model.Name" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

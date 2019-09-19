@@ -1,0 +1,10 @@
+﻿@model Todo
+
+<h1>Edit your Todo </h1>
+<form action="edited?id=@Model.TodoId&userid=@Model.UserId" method="post">
+    <div>
+        <label for="title">Todo:</label>
+    </div>
+    <input type="text" name="title" value="@Model.Title" />
+    <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+</form>
