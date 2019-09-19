@@ -52,6 +52,13 @@ namespace TodoApp.Controllers.Todo
             
             return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
         }
+
+        [HttpPost("/todo/complete")]
+        public IActionResult Complete(int id, string username)
+        {
+            todoService.CompleteTodo(id);
+            return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
+        }
         
     }
 }

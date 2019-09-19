@@ -58,5 +58,15 @@ namespace TodoApp.Servicies
                 applicationContext.SaveChanges();
             }
         }
+
+        public void CompleteTodo(int id)
+        {
+            var todo = FindTodoById(id);
+            if (todo != null)
+            {
+                todo.IsDone = true;
+                applicationContext.SaveChanges();
+            }
+        }
     }
 }

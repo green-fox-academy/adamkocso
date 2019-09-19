@@ -24,20 +24,27 @@
     @foreach (var todo in Model.Todos)
     {
         <tr>
-            <td>@todo.Title</td>
+            @if (todo.IsDone == false)
+            {
+                <td>@todo.Title</td>  
+            }
+            else
+            {
+                <td><strike>@todo.Title</strike></td>  
+            }
             
             <td class="text-center">
-                <form>
+                <form action="todo/complete?id=@todo.TodoId&username=@Model.Name" method="post">
                     <button type="submit" class="btn btn-success btn-sm">Complete</button>
                 </form>
             </td>
-            
+
             <td class="text-center">
                 <form action="todo/edit?id=@todo.TodoId&username=@Model.Name" method="post">
                     <button type="submit" class="btn btn-primary btn-sm">Edit</button>
                 </form>
             </td>
-            
+
             <td class="text-center">
                 <form action="todo/delete?id=@todo.TodoId&username=@Model.Name" method="post">
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

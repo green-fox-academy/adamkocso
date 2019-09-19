@@ -8,5 +8,6 @@ namespace TodoApp.Servicies
         void DeleteTodo(int id);
         Todo FindTodoById(int id);
         void EditTodo(int id, string title);
+        void CompleteTodo(int id);
     }
 }
