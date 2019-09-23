@@ -1,8 +1,25 @@
-﻿<h1>Login to your Todos</h1>
-<form action="/login" method="post">
-    <div>
-        <label for="username">Username</label>
-    </div>
-    <input type="text" name="username" />
-    <button type="submit" class="btn btn-primary btn-sm">Login</button>
-</form>
+﻿@model User
+
+<h1>Login to your Todos</h1>
+
+
+        <form asp-controller="User" asp-action="RenderLogin" method="post">
+            <div>
+                <label asp-for="Name">Username:</label>
+            </div>
+            <div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <input asp-for="Name"/>
+            <div>
+                <label asp-for="Password">Password:</label>
+            </div>
+            <div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <input asp-for="Password"/>
+            <div>
+                <br/>
+                <button type="submit" class="btn btn-primary btn-sm">Login</button>
+            </div>
+        </form>

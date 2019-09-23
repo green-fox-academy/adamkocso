@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TodoApp.Models;
 
@@ -13,20 +14,19 @@ namespace TodoApp.Servicies
             this.applicationContext = applicationContext;
         }
 
-        public void AddUser(string username)
+        public async Task AddUser(User user)
         {
-            var user = FindByUsername(username);
-            if (user == null)
+            var findUser = await FindByUsername(user.Name);
+            if (findUser == null)
             {
-                var newUser = new User {Name = username};
-                applicationContext.Users.Add(newUser);
+                applicationContext.Users.Add(user);
                 applicationContext.SaveChanges();
-            }
+            } 
         }
 
-        public User FindByUsername(string username)
+        public async Task<User> FindByUsername(string username)
         {
-            var user = applicationContext.Users.Include(a => a.Todos).FirstOrDefault(a => a.Name == username);
+            var user = await applicationContext.Users.Include(a => a.Todos).FirstOrDefaultAsync(a => a.Name == username);
             if (user == null)
             {
                 return null;
@@ -35,9 +35,9 @@ namespace TodoApp.Servicies
             return user;
         }
 
-        public User FindByUserId(int id)
+        public async Task<User> FindByUserId(int id)
         {
-            var user = applicationContext.Users.Include(a => a.Todos).FirstOrDefault(a => a.UserId == id);
+            var user = await applicationContext.Users.Include(a => a.Todos).FirstOrDefaultAsync(a => a.UserId == id);
             if (user == null)
             {
                 return null;

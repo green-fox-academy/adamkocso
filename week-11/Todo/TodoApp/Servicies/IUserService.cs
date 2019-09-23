@@ -1,11 +1,12 @@
-﻿using TodoApp.Models;
+﻿using System.Threading.Tasks;
+using TodoApp.Models;
 
 namespace TodoApp.Servicies
 {
     public interface IUserService
     {
-        void AddUser(string username);
-        User FindByUsername(string username);
-        User FindByUserId(int id);
+        Task AddUser(User user);
+        Task<User> FindByUsername(string username);
+        Task<User> FindByUserId(int id);
     }
 }

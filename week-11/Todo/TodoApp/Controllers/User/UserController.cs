@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using TodoApp.Controllers.Todo;
 using TodoApp.Servicies;
 
@@ -20,11 +21,16 @@ namespace TodoApp.Controllers.User
             return View();
         }
 
-        [HttpPost("/login")]
-        public IActionResult Login(string username)
+        [HttpPost("/")]
+        public async Task<IActionResult> RenderLogin(Models.User user)
         {
-            userService.AddUser(username);
-            return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
+            if (ModelState.IsValid)
+            {
+                string username = user.Name;
+                await userService.AddUser(user);
+                return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username}); 
+            }
+            return View();
         }
     }
 }

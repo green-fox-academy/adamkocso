@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TodoApp.Migrations
 {
-    public partial class ctodoapp : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,8 @@ namespace TodoApp.Migrations
                 {
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 10, nullable: false),
+                    Password = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,7 +27,7 @@ namespace TodoApp.Migrations
                 {
                     TodoId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
                     IsDone = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },

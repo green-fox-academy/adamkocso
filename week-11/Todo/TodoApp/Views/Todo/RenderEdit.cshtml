@@ -1,7 +1,7 @@
 ﻿@model Todo
 
 <h1>Edit your Todo </h1>
-<form action="edited?id=@Model.TodoId&userid=@Model.UserId" method="post">
+<form asp-controller="Todo" asp-action="Edit" asp-route-id="@Model.TodoId" asp-route-userid="@Model.UserId" method="post">
     <div>
         <label for="title">Todo:</label>
     </div>

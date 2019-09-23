@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using TodoApp.Servicies;
 
 namespace TodoApp.Controllers.Todo
@@ -15,48 +16,47 @@ namespace TodoApp.Controllers.Todo
         }
 
         [HttpGet ("/todo")]
-        public IActionResult Todo(string username)
+        public async Task<IActionResult> Todo(string username)
         {
-            var user = userService.FindByUsername(username);
+            var user = await userService.FindByUsername(username);
             return View(user);
         }
 
         [HttpPost("/todo/add")]
-        public IActionResult AddTodo(string username, string title)
+        public async Task<IActionResult> AddTodo(string username, string title)
         {
-            todoService.AddTodo(title, username);
+            await todoService.AddTodo(title, username);
             return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
         }
 
         [HttpPost("/todo/delete")]
-        public IActionResult DeleteTodo(int id, string username)
+        public async Task<IActionResult> DeleteTodo(int id, string username)
         {
-            todoService.DeleteTodo(id);
+            await todoService.DeleteTodo(id);
             return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
         }
 
         [HttpPost("/todo/edit")]
-        public IActionResult RenderEdit(int id, string username)
+        public async Task<IActionResult> RenderEdit(int id, string username)
         {
-            var todo = todoService.FindTodoById(id);
+            var todo = await todoService.FindTodoById(id);
             return View(todo);
         }
 
-        [HttpPost("/todo/edited")]
-        public IActionResult Edit(int id, int userid, string title)
+        [HttpPost("/todo/update")]
+        public async Task<IActionResult> Edit(int id, int userid, string title)
         {
-            var user = userService.FindByUserId(userid);
-            string username = user.Name;
+            var user = await userService.FindByUserId(userid);
+
+            await todoService.EditTodo(id, title);
             
-            todoService.EditTodo(id, title);
-            
-            return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
+            return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username = user.Name});
         }
 
         [HttpPost("/todo/complete")]
-        public IActionResult Complete(int id, string username)
+        public async Task<IActionResult> Complete(int id, string username)
         {
-            todoService.CompleteTodo(id);
+            await todoService.CompleteTodo(id);
             return RedirectToAction(nameof(TodoController.Todo), "Todo", new {username});
         }
         

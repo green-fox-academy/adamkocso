@@ -8,8 +8,8 @@ using TodoApp;
 namespace TodoApp.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190919125220_ctodoapp")]
-    partial class ctodoapp
+    [Migration("20190920112237_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,7 +25,8 @@ namespace TodoApp.Migrations
 
                     b.Property<bool>("IsDone");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.Property<int>("UserId");
 
@@ -41,7 +42,12 @@ namespace TodoApp.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(10);
+
+                    b.Property<string>("Password")
+                        .IsRequired();
 
                     b.HasKey("UserId");
 

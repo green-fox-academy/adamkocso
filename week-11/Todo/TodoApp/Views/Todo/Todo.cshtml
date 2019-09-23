@@ -4,7 +4,7 @@
 
 <br />
 
-<form action="todo/add?username=@Model.Name" method="post">
+<form asp-controller="Todo" asp-action="AddTodo" asp-route-username="@Model.Name" method="post">
     <div>
         <label for="title">Add Todo:</label>
     </div>
@@ -34,19 +34,19 @@
             }
             
             <td class="text-center">
-                <form action="todo/complete?id=@todo.TodoId&username=@Model.Name" method="post">
+                <form asp-controller="Todo" asp-action="Complete" asp-route-id="@todo.TodoId" asp-route-username="@Model.Name" method="post">
                     <button type="submit" class="btn btn-success btn-sm">Complete</button>
                 </form>
             </td>
 
             <td class="text-center">
-                <form action="todo/edit?id=@todo.TodoId&username=@Model.Name" method="post">
+                <form asp-controller="Todo" asp-action="RenderEdit" asp-route-id="@todo.TodoId" asp-route-username="@Model.Name" method="post">
                     <button type="submit" class="btn btn-primary btn-sm">Edit</button>
                 </form>
             </td>
 
             <td class="text-center">
-                <form action="todo/delete?id=@todo.TodoId&username=@Model.Name" method="post">
+                <form asp-controller="Todo" asp-action="DeleteTodo" asp-route-id="@todo.TodoId" asp-route-username="@Model.Name" method="post">
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
             </td>

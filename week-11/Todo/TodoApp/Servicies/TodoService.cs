@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TodoApp.Models;
 
@@ -15,32 +16,32 @@ namespace TodoApp.Servicies
             this.userService = userService;
         }
 
-        public void AddTodo(string title, string username)
+        public async Task AddTodo(string title, string username)
         {
             if (title != null)
             {
-                var user = userService.FindByUsername(username);
+                var user = await userService.FindByUsername(username);
                 var newTodo = new Todo {Title = title, IsDone = false, UserId = user.UserId};
                 applicationContext.Todos.Add(newTodo);
-                applicationContext.SaveChanges();
+                await applicationContext.SaveChangesAsync();
 
 
             }
         }
 
-        public void DeleteTodo(int id)
+        public async Task DeleteTodo(int id)
         {
-            var todo = FindTodoById(id);
+            var todo = await FindTodoById(id);
             if (todo != null)
             {
                 applicationContext.Todos.Remove(todo);
-                applicationContext.SaveChanges();
+                await applicationContext.SaveChangesAsync();
             }
         }
 
-        public Todo FindTodoById(int id)
+        public async Task<Todo> FindTodoById(int id)
         {
-            var todo = applicationContext.Todos.FirstOrDefault(a => a.TodoId == id);
+            var todo = await applicationContext.Todos.FirstOrDefaultAsync(a => a.TodoId == id);
             if (todo == null)
             {
                 return null;
@@ -49,23 +50,23 @@ namespace TodoApp.Servicies
             return todo;
         }
 
-        public void EditTodo(int id, string title)
+        public async Task EditTodo(int id, string title)
         {
-            var todo = FindTodoById(id);
+            var todo = await FindTodoById(id);
             if (todo != null)
             {
                 todo.Title = title;
-                applicationContext.SaveChanges();
+                await applicationContext.SaveChangesAsync();
             }
         }
 
-        public void CompleteTodo(int id)
+        public async Task CompleteTodo(int id)
         {
-            var todo = FindTodoById(id);
+            var todo = await FindTodoById(id);
             if (todo != null)
             {
                 todo.IsDone = true;
-                applicationContext.SaveChanges();
+                await applicationContext.SaveChangesAsync();
             }
         }
     }
